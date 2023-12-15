@@ -1,0 +1,24 @@
+name: demo-2
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Who to greet"
+        required: true
+        type: string
+        default: "Markus"
+      laune:
+        description: "Wie ist die Laune"
+        required: true
+        type: choice
+        options:
+          - "gut"
+          - "schlecht"
+          - "egal"
+        default: "gut"
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello ich bin ${{ inputs.name }}! Meine Laune ist ${{ inputs.laune }}"
